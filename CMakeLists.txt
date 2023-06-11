@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.25)
 project(guass_target_problem C)
 
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall")
+# assuming gcc as the C compiler
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -DHAVE_INLINE")
 
 set(target_sources
         src/main.c
