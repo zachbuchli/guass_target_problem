@@ -3,7 +3,7 @@ project(guass_target_problem C)
 
 set(CMAKE_C_STANDARD 99)
 # assuming gcc as the C compiler
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -DHAVE_INLINE")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -g3 -Og -Wall -Wextra -pedantic -DHAVE_INLINE -D_FORTIFY_SOURCE=2 -DDEBUG")
 
 set(target_sources
         src/main.c

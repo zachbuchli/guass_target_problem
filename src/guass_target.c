@@ -4,27 +4,26 @@
 #include <stdio.h>
 #include <gsl/gsl_math.h>
 #include <gsl/gsl_vector.h>
+#include <gsl/gsl_blas.h>
+#include <stdbool.h>
 
 #include "guass_target.h"
 
 
 
-int guass_target(void)
+bool guass_target(gsl_vector* r1, gsl_vector* r2, int dm, double time, gsl_vector *v1, gsl_vector *v2)
 {
-    int i = 0;
-    gsl_vector *v = gsl_vector_alloc(3);
 
-    for(i=0; i < 3; i++)
-    {
-        gsl_vector_set(v, i, 1.23 + i);
+    // Calc the dot product of position vectors
+    double r_dot_product_result;
+    if(gsl_blas_ddot(r1, r2, &r_dot_product_result) != 0){
+        return false;
     }
 
-    for (i = 0; i < 3; i++) /* OUT OF RANGE ERROR */
-    {
-        printf("v_%d = %g\n", i, gsl_vector_get(v, i));
-    }
+    printf("%s %g\n","Result of dot product", r_dot_product_result);
 
-    gsl_vector_free(v);
 
-    return 0;
+    double cos_delta_v = 0;
+
+    return true;
 }
